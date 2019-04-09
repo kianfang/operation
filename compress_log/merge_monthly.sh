@@ -12,9 +12,12 @@ start_month=1
 # Default end of December
 end_month=${2:-12}
 
-for i in `seq -w ${start_month} ${end_month}`
+#for ((i=$start_month;i<=$end_month;i++))
+#do
+#log_day=`echo ${i} | awk '{printf("%02d",$0)}'`
+for log_day in `seq -w ${start_month} ${end_month}`
 do
-    log_date=${log_year}${i}
+    log_date=${log_year}${log_day}
     log_name_prefix=access_${log_date}
     file_count=`ls ${log_name_prefix}.log 2>/dev/null | wc -l`
 
